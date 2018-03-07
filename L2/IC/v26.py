@@ -40,11 +40,14 @@ def MIC(freq_vector,second_text):
         return sum
 
 def len_of_key(plain_text):
-        m=0
-        while True:
+        m=1
+        flag=True
+        while flag==True:
                 for i in range(0,m+1):
                    if aprox_equal(0.065,IC(n_to_n_from_j(plain_text,m,i))):
-                           break
+                           flag=False
+                   if m>len(plain_text):
+                           flag=False
                 m+=1
         return m
 
@@ -118,6 +121,8 @@ print (IC(input_text))
 print (CharShift('a',3))
 print (n_to_n_from_j(input_text,2,3))
 print (aprox_equal(0.06565645,0.06524234))
+
+#import code; code.interact(local=locals())
 
 print (Vdecrypt(VEncrypt(input_text,input_key),input_key))
 print (len_of_key(VEncrypt(input_text,input_key)))
