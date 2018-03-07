@@ -1,4 +1,4 @@
-freqx = [
+freq = [
 0.08167,
 0.01492,
 0.02782,
@@ -33,10 +33,10 @@ def aprox_equal(first_num,second_num):
                 return True
         return False
 
-def MIC(first_text,second_text):
+def MIC(freq_vector,second_text):
         sum=0
         for i in range(0,26):
-             sum+= (times_i_in_a(first_text,chr(i+97))/len(first_text)) *(times_i_in_a(second_text,chr(i+97))/len(second_text))
+             sum+= (freq_vector[i]/26) *(times_i_in_a(second_text,chr(i+97))/len(second_text))
         return sum
 
 def len_of_key(plain_text):
@@ -57,6 +57,19 @@ def times_i_in_a(plain_text,searched):
 
 def CharShift(plain_char,no_poz):
         return chr((ord(plain_char)-97+no_poz)%26+97)
+
+def getKey(chiper_text,key_len):
+        key_to_return=""
+        for j in range(1,key_len+1):
+                s=(-1)
+                while True:
+                        if aprox_equal(MIC(freq,CharShift(n_to_n_from_j(chiper_text,m,j),s)),0.065):
+                                break
+                key_to_return=key_to_return.join(("",(26-s)%26+96))
+        return key_to_return
+
+
+
 
 def n_to_n_from_j(plain_text,n,j):
         iterator=j
@@ -79,6 +92,14 @@ def VEncrypt(plain_text,en_key):
                 crypt_text = crypt_text.join(('', tmp_char))
         return crypt_text
 
+
+def Vdecrypt(chiper_text, key):
+        decrypted_text = ""
+        for i in range(0, len(chiper_text)):
+                tmp_char=  chr(( (ord(chiper_text[i])) - ord(key[i%len(key)])     )%26+97)
+                decrypted_text=decrypted_text.join(("",tmp_char))
+        return decrypted_text
+
 def Shiting(plain_text,no_poz):
         no_poz=int(no_poz)*(-1)
         return plain_text[no_poz:]+plain_text[:no_poz]
@@ -98,5 +119,7 @@ print (CharShift('a',3))
 print (n_to_n_from_j(input_text,2,3))
 print (aprox_equal(0.06565645,0.06524234))
 
+print (Vdecrypt(VEncrypt(input_text,input_key),input_key))
+print (len_of_key(VEncrypt(input_text,input_key)))
 
 
