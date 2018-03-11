@@ -1,0 +1,96 @@
+﻿>>>topologie logica/fizica de retea (alea cu stea,magistrala,inel)
+
+Topologie fizica: modul de interconectare a calculatoarelor in retea Topologie logica: modul in care datele sunt transferate de la un calculator la altul Posibile topologii fizice pentru: – Retele cu difuzare LAN • Magistrala (bus) • Inel (ring) – Retele point-to-point • Stea (star) • Inel (ring) • Arbore (tree) • Completa  
+
+
+>>>nat,tcp,socketBSD,frame ethernet
+Network Address Translation (NAT) is a network protocol used in IPv4 networks that allows multiple devices to connect to a public network using the same public IPv4 address. NAT was originally designed in an attempt to help conserve IPv4 addresses.[1]
+NAT modifies the IP address information in IPv4 headers while in transit across a traffic routing device. This presents some drawbacks in terms of the quality of Internet connectivity and requires careful attention to the details of its implementation. In particular, all types of NAT break the originally envisioned model of IP end-to-end connectivity across the Internet and NAPT makes it difficult for systems behind a NAT to accept incoming communications. As a result, NAT traversal methods have been devised to alleviate the issues encountered. NAT has become a common, indispensable feature in routers for home and small-office Internet connections.
+
+
+Socket
+•Facilitate generala, independenta de arhitectura hardware, de protocol si de tipul de transmisiune a datelor, pentru comunicare intre procese aflate pe masini diferite, in retea
+•Ofera suport pentru familii multiple de protocoale
+–Protocolul domeniului UNIX – folosit pentru comunicatii locale
+–Protocolul domeniului Internet folosind TCP/IP
+–Altele: XNS Xerox,…
+
+
+
+fRAME
+
+Preambul 7
+Delimitator1
+Adresa MAC destinatie6
+Adresa MAC a sursei6
+Date (payload)1500
+Camp de completare46
+Suma de control4
+
+
+>>>diferenta intre comutare si rutare
+
+Switching involves moving packets between devices on the same network. Conversely, routing involves moving packets between different networks.
+
+Switches operate at layer 2 of the OSI Model. A switch, also referred to as a multi-port bridge, is able to determine where a packet should be sent by examining the MAC address within the data link header of the packet (the MAC address is the hardware address of a network adapter). A switch maintains a database of MAC addresses and what port they are connected to.
+
+Routers, on the other hand, operate at layer 3 of the OSI Model. A router is able to determine where to send a packet using the Network ID within the Network layer header. It then uses the routing table to determine the route to the destination host.
+
+>>>tipuri de servere tcp concurente
+
+>>>alternativa la fork (select, threaduri)
+
+>>>accesul la mediul fizic
+
+>>>conceptul de port,fereastra glisanta tcp
+
+>>>primitive blocanta + justificare(accept,read,write- nu stiu justificare)
+
+>>>osi si tcp/ip
+
+ISO/OSI este indicat ca model teoretic; TCP/IP este eficient in implementare
+•OSI face explicita distinctia intre serviciu, interfata si protocol; TCP/IP nu
+•ISO/OSI pune la dispozitie protocoale care asigura o comunicare fiabila (detectarea si tratare de erori la fiecare nivel);
+TCP/IP face verificarea comunicarii la nivelul transport
+•OSI suporta ambele tipuri de comunicatii la nivel retea (fara conexiune si orientate conexiune); TCP/IP suporta la nivelul retea comunicatii fara conexiune si la nivelul transport ambele moduri
+
+>>>udp si utilizarea lui
+
+>>>dns, ce date se contin pe serverele dns
+
+ontains a database of network names and addresses for other Internet hosts
+Exista un server primar (primary/authoritative name server) care deserveste un anumit domeniu si, eventual, mai multe servere secundare continind baze de date replicate
+poate fi privit ca o baza de date distribuita utilizata la maparea dintre numele host-urilor si IP-uri si vice versa
+
+>>>diferenta udp/tcp
+Aspecte privind utilizarea UDP:
+-UDP suporta broadcasting si multicasting
+-UDP nu are nevoie de un mecanism de stabilire a conexiunii
+-Minimul de timp necesar unei tranzactii UDP cerere-raspuns este: RRT(Round Trip Time) + SPT (server processing time)
+Aspecte privind utilizarea TCP:
+-TCP suporta point-to-point
+-TCP este orientat conexiune
+-Ofera siguranta si asigura transmiterea in ordine a datelor;
+-Ofera mecanisme de control al fluxului si control al congestiei
+-Minimul de timp necesar unei tranzactii TCP cerere-raspuns daca se creaza o noua conexiune este: 2 *RRT + SPT
+
+
+>>>p2p,client-server
+
+>>>dhcp,socket(),accept
+
+socket
+Facilitate generala, independenta de arhitectura hardware, de protocol si de tipul de transmisiune a datelor, pentru comunicare intre procese aflate pe masini diferite, in retea
+
+dhcp
+DHCP (Dynamic Host Configuration Protocol) este un protocol utilizat de dispozitivele din retea (clienti) pentru a obtine diferiti parametri necesari pentru operarea intr-o retea IP (Internet Protocol). Prin utilizarea acestui protocol, nivelul de lucru pentru administrarea de sistem si retea descreste. Dispozitve pot fi adaugata la retea cu un minim sau chiar fara necesitatea de setari manuale.
+DHCP este un mod de a administra modul de separare a parametrilor de retea intr-un singur server, ori intr-un grup de servere in mod de toleranta la erori. Chiar in retelele cu putine computere, protocolul DHCP este necesar pentru a adauga un computer sau un dispoztiv la retea fara efort.
+Chiar si pentru serverele ale caror adrese se schimba rareori, DHCP este setarea recomandata pentru adrese, astfel incat la necesitatea schimbarii de adresa, modificarile necesare sunt foarte putine. Pentru dispozitive, asa cum sunt router-ele si firewall-urile, care nu ar trebui sa utilizeze DHCP, acesta din urma poate fi util pentru a instala protocoalele TFTP (Trivial File Transfer Protocol) sau SSH pe acelasi server ce ruleaza DHCP, in scopul centralizarii de administrare.
+DHCP este de asemenea util in repartizarea de adrese la computerele tip server sau desktop, si prin proxy PPP (Point to Point Protocol), in cazul conexiunilor tip broadband sau dial-up cat si in cazul NAT (Network Adress Translation) si al routerelor. DHCP nu este potrivit pentru infrastructuri cum ar fi router-ele non-edge si serverele DNS.
+
+accept
+Acceptarea propriu-zisa a conexiunilor din partea clientilor
+–Cand aplicatia este pregatia pentru a trata o noua conexiune, va trebui sa interogam sistemul asupra unei alte conexiuni cu un client
+int accept (int sockfd,
+struct sockaddr *cliaddr,
+socklen_t *addrlen);

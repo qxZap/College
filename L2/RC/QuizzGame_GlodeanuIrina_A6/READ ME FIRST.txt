@@ -1,0 +1,19 @@
+PENTRU CA APLICATIA SA POATA FI FOLOSITA:
+-minim 4 terminale conectate cu SSH la fenrir
+	-1 pt server
+	-3 pt cei 3 clienti care se vor "juca"
+
+comanda de compilat serverul : 
+gcc -w -pthread server.c -o serv sqlite3.c -DSQLITE_THREADSAFE=2 -Wl,--no-as-needed -ldl -I *PATH-UL*(/fenrir/studs/irina.glodeanu/pfinal), spre exemplu
+
+comanda de rulat serverul ./serv
+
+
+
+
+
+comanda de complilat clientul :
+gcc client.c -o cli
+
+comanda de rulat clientii (cei 3):
+./cli 127.0.0.1(SAU)85.122.23.145 6565
