@@ -33,6 +33,7 @@ def readFile():
 
             
 def encrypt(message):
+    ctext = ''
     if mode == AES.MODE_ECB:
         obj = AES.new(key,mode)
         ctext = obj.encrypt(message)
@@ -51,11 +52,34 @@ def decrypt(ctext):
         obj = AES.new(key,mode,iv)
         text = obj.decrypt(ctext)
     
-    return ctext
+    return text
 
-
+def fullEncrypt(message):
+    messageList = [message[idx:idx+16] for idx,val in enumerate(message) if idx%16 == 0]
+    for i in messageList:
+        if mode == AES.MODE_ECB:
+            obj = AES.new(key,mode)
+            i = obj.encrypt(i)
+        elif mode == AES.MODE_CBC:
+            obj = AES.new(key,mode,iv)
+            i = obj.encrypt(i)
+    return ''.join(messageList)
+    
+def fullDecrypt(message):
+    messageList = [message[idx:idx+16] for idx,val in enumerate(message) if idx%16 == 0]
+    for i in messageList:
+        if mode == AES.MODE_ECB:
+            obj = AES.new(key,mode)
+            i = obj.decrypt(i)
+        elif mode == AES.MODE_CBC:
+            obj = AES.new(key,mode,iv)
+            i = obj.decrypt(i)
+    return ''.join(messageList)
+    
+    
     
 def getKey(URL,kind):
+    key = ''
     URL+=kind
     contents = b64decode(urllib2.urlopen(URL).read())
     if mode == AES.MODE_ECB:
@@ -80,6 +104,9 @@ if sys.argv[1]=='A':
         print 'error'
         sys.exit(0)
     print "got: ",data
+    
+    print fullDecrypt(fullEncrypt('tuicafacepedeste'))
+    
     MESSAGE = readFile()
     while len(MESSAGE)%16!=0: MESSAGE+='+'
     MESSAGE = MESSAGE+len(MESSAGE)%16*'+'
@@ -131,7 +158,7 @@ elif sys.argv[1]=='B':
                 text = obj.decrypt(data)
             finalString+=text
             
-            conn.send(encrypt("finalstringwords"))
+            conn.send(fullEncrypt("finalstringwords"))
         
     conn.close()
     while finalString[-1:]=='+': finalString = finalString[:-1]
