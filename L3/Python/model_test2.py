@@ -4,26 +4,14 @@ from hashlib import md5
 from hashlib import sha256
 import zipfile
 import socket
+import re
 
 
 def problema1(s):
-	list = []
-	word = ""
-	for i in s:
-		if i.isalpha() or i.isdigit() or i=='_':
-			word+=i
-		else:
-			list.append(word)
-			word=""
-
-	list.append(word)
-	while "" in list:
-		list.remove("")
-	return sorted(list)
+	return re.findall("\w+", s)
 
 def problema2(s,url):
-	contents = urllib.request.urlopen(url).read()
-	return s in str(contents)
+	return s in str(urllib.request.urlopen(url).read())
 
 def problema3(path):
 	returned = []
@@ -42,18 +30,13 @@ def problema4(path):
 	for i in z.infolist():
 		if i.compress_size > 1000:
 			list.append(os.path.basename(i.filename))
-
-
 	return sorted(list)
 
 def problema5(host,port,text):
 	s = socket.socket()
 	s.connect((host,port))
-	#s.send(str.encode(text))
 	s.send(text.encode())
 	back = s.recv(32)
-
-	#s.send(str.encode(sha256(back).hexdigest()))
 	s.send((sha256(back).hexdigest()).encode())
 	back = s.recv(32)
 
