@@ -90,8 +90,13 @@ for doc in documents:
 sortedDic =  sorted(scoreDic.items(), key=lambda kv: kv[1], reverse=True)
 #for i in sortedDic:
 #	print(i)
-for ss in wn.synsets("small"):
-	print(ss,dir(ss))
+
+
+def get_hyponyms(synset):
+    hyponyms = set()
+    for hyponym in synset.hyponyms():
+        hyponyms |= set(get_hyponyms(hyponym))
+    return hyponyms | set(synset.hyponyms())
 
 lemmedWords=[]
 lemmed=[]
@@ -102,8 +107,14 @@ for i in sortedDic:
 			lemmed.append(i[0])
 			print("\n\nWord: ",i[0])
 			found=[]
-			for ss in wn.synsets(i[0]):
+			used=None
+			synset=wn.synsets(i[0])
+			hyponyms=[]
+			if len(synset):
+				hyponyms=synset[0].hypernyms()
+			for ss in synset:
 				syns = ss.lemma_names()
+				used = ss
 				searchWords=[]
 				found=[]
 				for syn in syns:
@@ -113,10 +124,27 @@ for i in sortedDic:
 					for document in documents:
 						if syn in document and syn not in found:
 							found.append(syn)
+			hypo=[]
+			if len(hyponyms):
+				for ss in hyponyms:
+					syns = ss.lemma_names()
+					used = ss
+					searchWords=[]
+					hypo=[]
+					for syn in syns:
+						searchWords.append(syn.replace("_"," "))
+					for syn in searchWords:
+						searchedWords.append(syn)
+						for document in documents:
+							if syn in document and syn not in hypo:
+								hypo.append(syn)
+				if len(hypo):
+					print("Hypo found: ",hypo)
+			else:
+				print("No hyponyms for ",i[0])
+
 			if len(found):
 				print("Found: ",found)
-			else:
-				print("Nothing else")
 
 
 
