@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
+		<style type="text/css">
+			::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+			  color: white;
+			  opacity: 1; /* Firefox */
+			}
+
+			.creditcard{
+				background: #4076ce;
+				color: #ffffff;
+				text-align: center;
+				border-radius: 25px;
+  				border: 3px solid #ffffff;
+  				width: 600px;
+  				height: 350px;
+  				padding: 15px;
+  				box-shadow: 0px 0px 4px #000000;
+			}
+			.creditcard h3{
+				text-align: left;
+				font-family: 'ZCOOL QingKe HuangYou', cursive;
+				font-size: 30px;
+			}
+			.creditcard p{
+				text-align: left;
+				font-family: 'ZCOOL QingKe HuangYou', cursive;
+				font-size: 20px;
+			}
+			.creditcard label{
+				display: inline-block;
+			}
+			.creditcard input{
+				font-family: 'ZCOOL QingKe HuangYou', cursive;
+				font-size: 18px;
+				width: 90px;
+			}
+			#mnth, #yhr
+			{
+			    display:inline;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="creditcard">
+			<h3>CREDIT CARD</h3>
+			<hr align="left" >
+			<label for="cardnum"><p>CARD NUMBER</p></label>
+			<input type="text" palceholder="0000" id="cardnum" name="cardnum" maxlength="4">
+			<input type="text" palceholder="0000"  id="cardnum2" name="cardnum2" maxlength="4">
+			<input type="text" palceholder="0000"  id="cardnum3" name="cardnum3" maxlength="4">
+			<input type="text" palceholder="0000"  id="cardnum4" name="cardnum4" maxlength="4" >
+			<div id="mnth">
+				<p>MONTH<p>
+				<select>
+				  <option value="jan">01</option>
+				  <option value="feb">02</option>
+				  <option value="mar">03</option>
+				  <option value="apr">04</option>
+				  <option value="may">05</option>
+				  <option value="jun">06</option>
+				  <option value="jul">07</option>
+				  <option value="aug">08</option>
+				  <option value="sep">09</option>
+				  <option value="oct">10</option>
+				  <option value="nov">11</option>
+				  <option value="dec">22</option>
+				</select>
+			</div>
+			<div id="yhr">
+				<p>YAR<p>
+				<select>
+				  <option >19</option>
+				  <option >20</option>
+				  <option >21</option>
+				  <option >22</option>
+				  <option >23</option>
+				  <option >24</option>
+				</select>
+			</div>
+			<p>MILEA MIHAI-CRISTIAN<p>
+			<img src="https://cdn2.iconfinder.com/data/icons/credit-cards-6/156/visa-512.png" alt="visa">
+		</div>
+		</div>
+	</body>
+</html>
