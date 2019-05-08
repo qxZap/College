@@ -141,13 +141,13 @@ def postEpisode(s_no,e_no):
                                         reason="Episode does not exist"
                                         ),404
                         content = request.get_json()
-                        episodes[s_no][e_no] = content
-                        if "title" not in content or "duration" not in content:
+                        if "title" not in content and "duration" not in content:
                               return jsonify(
                                 reason="Body Invalid"
                                 ),400
                         if "title" in content:
                                 episodes[s_no][e_no]["title"]=content["title"]
+                        if "duration" in content:
                                 episodes[s_no][e_no]["duration"]=content["duration"]
                         dumpFiles()
                         return jsonify(
@@ -194,18 +194,3 @@ def deleteEpisode(s_no,e_no):
                                 ),401 
 
 
-
-
-@app.route('/post/<string:name>', methods = ['POST'])
-@cross_origin(origin="*")
-def doPost(name):
-    content = request.get_json()
-    if(uses[content["key"]]>1):
-        uses[content["key"]]-=1
-        return jsonify(
-                text="ok"
-          ),200
-    else:
-        return jsonify(
-                key="NO"
-          ),403
