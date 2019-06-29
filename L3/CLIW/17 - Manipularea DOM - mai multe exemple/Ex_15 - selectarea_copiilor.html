@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Selectarea copiilor</h2>
+
+    <ul id="myID" style="background-color:lightgray">
+      <li>Item number 1</li>
+      <li>Item number 2</li>
+      <li>Item number 3</li>
+      <li>Item number 4</li>
+      <li>Item number 5</li>
+      <li>Item number 6</li>
+    </ul>
+  
+  
+    <script>
+      function functieDeExecutat(){
+        var copii = document.getElementById("myID").childNodes;
+        for(var i=0; i<copii.length; i++)
+        {          
+          if (copii[i].tagName=="LI") {
+            var val = "RGB("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")";
+            copii[i].style.background=val;
+          }  
+          else console.log(copii[i]);        
+        }      
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+    
+  </body>
+</html>

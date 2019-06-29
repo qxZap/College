@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Schimbare Continut</h2>
+
+    <p id="myID" style="background-color:lightgray;">Acesta este continutul initial</p>
+  
+  
+    <script>
+      function functieDeExecutat(){
+        document.getElementById("myID").innerHTML = "M-am schimbat !";
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+  
+    <p>Pentru a indica care dintre obiecte vrem sa il modificam, putem sa il identificam<br />       
+    pe baza unui ID. Elementul va avea atributul id setat cu o valoare V si pentru a-l<br />
+    referentia din JS folosim metoda document.getElementById("V").</p> 
+    
+    <p>Pentru a-i schimba continutul vom utiliza innerHTML.</p>
+    
+  </body>
+</html>

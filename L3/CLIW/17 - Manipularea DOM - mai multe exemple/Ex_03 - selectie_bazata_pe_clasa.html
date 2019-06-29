@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Schimbare Continut</h2>
+
+    <p class="myClass" style="background-color:lightgray;">Acesta este continutul initial</p>
+  
+  
+    <script>
+      function functieDeExecutat(){
+        document.getElementsByClassName("myClass")[0].innerHTML = "M-am schimbat !";
+        // si aici este returnat un array de elemente ce au aceeasi clasa si trebuie sa selectam pozitia
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+  
+    <p>Pentru a indica care dintre obiecte vrem sa il modificam, putem sa il identificam<br />       
+    pe baza clasei: document.getElementsByClassName("nume_clasa").</p> 
+    
+    <p>Pentru a-i schimba continutul vom utiliza innerHTML.</p>
+    
+  </body>
+</html>

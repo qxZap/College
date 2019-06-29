@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2 style="background-color:lightgray">Acesta este ultimul copil al lui H2</h2>
+
+    <ul id="myID" >
+      <li>Item number 1</li>
+      <li>Item number 2</li>
+      <li>Item number 3</li>
+      <li>Item number 4</li>
+      <li>Item number 5</li>
+      <li>Item number 6</li>
+    </ul>
+         
+  
+    <script>
+      function functieDeExecutat(){
+        alert(document.getElementsByTagName("h2")[0].lastChild.nodeValue);
+        // se ia efectiv textul din interiorul tagului
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+    
+  </body>
+</html>

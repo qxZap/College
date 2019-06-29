@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body id="bd">
+    <h2>Eliminare nod</h2>
+                   
+    <p id="myID" style="background-color:lightgray;">Acesta este continutul initial</p>
+  
+  
+    <script>
+      function functieDeExecutat(){
+        var nod = document.getElementById("myID");  // dupa cine vreau sa adaug        
+        nod.parentElement.removeChild(nod);                       
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+  
+    <p>Pentru modificarea unui atribut i se va adauga o noua valoare.</p>
+    <p>Ca exemplu vom modifica atributul direction pentru p din ltr in rtl</p> 
+    
+    
+    
+  </body>
+</html>

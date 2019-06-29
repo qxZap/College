@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Inlocuire nod</h2>
+
+    <p id="myID" style="background-color:lightgray;">Acesta este continutul initial</p>
+  
+  
+    <script>
+      function functieDeExecutat(){
+        var h = document.createElement("h1");
+        h.innerHTML = "H1 Inner HTML";
+        
+        var nod = document.getElementById("myID");
+        
+        nod.parentElement.replaceChild(h, nod);
+        
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+  
+    <p>Pentru modificarea unui atribut i se va adauga o noua valoare.</p>
+    <p>Ca exemplu vom modifica atributul direction pentru p din ltr in rtl</p> 
+    
+    
+    
+  </body>
+</html>

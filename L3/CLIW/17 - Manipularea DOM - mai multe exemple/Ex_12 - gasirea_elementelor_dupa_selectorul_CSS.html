@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.gray{
+   background-color:lightgray;
+}
+</style>
+</head>
+  <body>
+    <h2>Selectie pe baza selectorului CSS</h2>
+
+    <p id="myID" class="gray">Acesta este continutul initial</p>
+    <h4 id="myID" class="gray">Acesta nu se va modifica pentru ca nu e la fel ca anteriorul</h4>
+  
+  
+    <script>
+      function functieDeExecutat(){
+        document.querySelectorAll("p.gray")[0].innerHTML = "M-am schimbat !";
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+  
+    <p>Pentru a indica care dintre obiecte vrem sa il modificam, putem sa il identificam<br />       
+    pe baza unui ID. Elementul va avea atributul id setat cu o valoare V si pentru a-l<br />
+    referentia din JS folosim metoda document.getElementById("V").</p> 
+    
+    <p>Pentru a-i schimba continutul vom utiliza innerHTML.</p>
+    
+  </body>
+</html>

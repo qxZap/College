@@ -1,0 +1,131 @@
+body{
+	width:900px;
+	margin: auto;
+	font-family: 'Roboto', sans-serif;
+    overflow: scroll;
+}
+
+h1{
+	margin: 0px;
+	background: url(../img/CosminVarlan.jpg);
+	text-indent: -9999px;
+	height: 100px;
+	width: 100px;
+	position: relative;
+	left:30px;
+	top:30px;
+	border-radius: 15px;
+	border: 3px solid #aaa;
+	cursor: pointer; 
+}
+
+h2::before{content: "\2B50 \ ";}
+h2{
+	clear: both;
+    background-color:#330000;
+    color:#ffffff;
+	padding-left: 30px;
+    border:none 5px #000000;
+    border-radius:30px;
+    position: sticky;
+    margin-bottom:20px;
+}
+
+
+h3{
+	clear: both;
+    background-color:#330000;
+    color:#ffffff;
+	padding-left: 30px;
+    border:none 5px #000000;
+    border-radius:30px;
+    margin-top:60px;
+}
+
+h4{
+   color:#222222;
+   font-family: verdana, tahoma, arial,helvetica;
+   font-size:13px;
+   margin-bottom:2px;
+   border-left-style: groove;
+   border-left-color: #9a0101;
+   border-bottom-style: groove;
+   border-bottom-color: #9a0101;
+   padding:5px;
+}
+
+header{
+	height:170px;
+}
+
+nav{
+	visibility: hidden;
+	margin:0px;
+	margin-bottom:20px;
+    padding-bottom:7px;
+	border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+	background: white;
+}
+
+main{
+	background: white;
+	width:900px;
+	margin:auto;
+}
+.selectedMenu{
+	color: green;
+	pointer-events: none;
+	cursor: default;
+}
+li.absent{
+	text-decoration: line-through;
+	color: #aaaaaa;
+}
+li.temp{
+	color: #777;
+}
+li.temp::before{content: "\2753 \ ";}
+li.propunere::before{content: "\2728\ ";}
+
+li.acceptat{
+	color: #000;
+}
+li.acceptat::before{content: "\2705 \ ";}
+span.acceptat::before{content: "\2705 \ ";}
+li.rejectat::before{ content: "\274C \ ";}
+li.rejectat{text-decoration: line-through;}
+
+
+
+ul#menu li {
+	display: inline;
+	padding-right: 10px;
+	text-shadow: 1px 1px 1px #ccc;
+}
+
+ul#menu{
+	margin: 0px;
+	margin-left:110px;
+	margin-top:10px;
+}
+ul#menu a {
+	text-decoration: none;
+	cursor: pointer; cursor: pointer; 
+}
+ul#menu a:hover {
+	text-decoration: none;
+	cursor: pointer; cursor: pointer; 
+}
+.punctaj{
+	color:red;
+}
+.activ{
+  color:#336699;
+  padding-bottom:7px;
+  border-bottom: 1px solid #336699;
+  cursor: pointer; cursor: pointer; 
+}
+#componente{
+	display:none;
+}

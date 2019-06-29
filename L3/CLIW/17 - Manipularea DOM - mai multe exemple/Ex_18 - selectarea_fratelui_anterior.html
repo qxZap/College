@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Frate</h2>
+
+    <ul>
+      <li>Item number 1</li>
+      <li>Item number 2</li>
+      <li id="myID" style="background-color:lightgray">Item number 3</li>
+      <li>Item number 4</li>
+      <li>Item number 5</li>
+      <li>Item number 6</li>
+    </ul>
+         
+  
+    <script>
+      function functieDeExecutat(){
+        alert(document.getElementById("myID").nextSibling.nodeName);
+        alert(document.getElementById("myID").firstChild.nodeValue);
+        alert(document.getElementById("myID").nextSibling.nextSibling.nodeName);
+        document.getElementById("myID").nextSibling.nextSibling.style.color="red";              
+      }
+    </script>    
+    <button onclick="functieDeExecutat()">APASSAAAAAAaaaaa....</button>
+    
+  </body>
+</html>
