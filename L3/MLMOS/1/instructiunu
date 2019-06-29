@@ -1,0 +1,18 @@
+sudo su - # for sudo
+ls /usr/lib/systemd/system
+/etc/systemd/system/boostrap.service
+systemctl ... ^^
+systemctl status bootstrap
+systemctl enable boostrap
+#enable la serviciu
+oneshot
+
+
+if -f config.yaml
+
+
+myhostname=$(awk -F":" '{print $2}')
+hostnamectl set-hostname $myhostname
+
+
+ssh-keygen

@@ -1,0 +1,9 @@
+[Unit]
+Description=Serviciu Jmeker
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /root/boostrap.sh
+
+[Install]
+WantedBy=multi-user.target
